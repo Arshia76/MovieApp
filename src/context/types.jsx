@@ -1,0 +1,11 @@
+export const UPCOMING_MOVIES = 'UPCOMING_MOVIES';
+export const VIDEOS = 'VIDEOS';
+export const ALL_GENRES = 'ALL_GENRES';
+export const MOVIES_BY_GENRE = 'MOVIES_BY_GENRE';
+export const TOP_RATED = 'TOP_RATED';
+export const CAST = 'CAST';
+export const MOVIE_DETAIL = 'MOVIES_DETAIL';
+export const SET_GENRE = 'SET_GENRE';
+export const NOW_PLAYING = 'NOW_PLAYING';
+export const SIMILAR_MOVIES = 'SIMILAR_MOVIES';
+export const SEARCH = 'SEARCH'
