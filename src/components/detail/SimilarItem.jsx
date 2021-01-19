@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Typography, Grid } from '@material-ui/core';
+import { Paper, Typography, Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactStars from 'react-stars';
 import { withRouter } from 'react-router-dom';
@@ -8,6 +8,7 @@ const useStyles = makeStyles({
   paper: {
     margin: '1rem 0',
     border: '2px solid orange',
+    height: '100%',
   },
   image: {
     width: '100%',
@@ -37,7 +38,7 @@ const SimilarItem = ({ id, img, title, rating, history }) => {
   };
   const classes = useStyles();
   return (
-    <Grid item xs={10} sm={6} md={4} lg={3} style={{ margin: 'auto' }}>
+    <Grid item xs={10} sm={6} md={4} lg={3} style={{ margin: ' auto' }}>
       <Paper className={classes.paper}>
         <img
           className={classes.image}
@@ -47,14 +48,16 @@ const SimilarItem = ({ id, img, title, rating, history }) => {
         />
       </Paper>
 
-      <Typography className={classes.text2}>{title}</Typography>
-      <Typography className={classes.text}>Rating: {rating}</Typography>
-      <ReactStars
-        className={classes.star}
-        count={rating}
-        size={20}
-        color1={'#f4c10f'}
-      ></ReactStars>
+      <Box style={{ height: '12rem', overflow: 'hidden' }}>
+        <Typography className={classes.text2}>{title}</Typography>
+        <Typography className={classes.text}>Rating: {rating}</Typography>
+        <ReactStars
+          className={classes.star}
+          count={rating}
+          size={20}
+          color1={'#f4c10f'}
+        ></ReactStars>
+      </Box>
     </Grid>
   );
 };
