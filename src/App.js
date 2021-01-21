@@ -7,16 +7,18 @@ import Detail from './pages/Detail';
 import Footer from './components/Footer';
 import Appbar from './components/Appbar';
 import Search from './pages/Search';
+import Pagination from './pages/Pagination';
 
 function App() {
   return (
     <MovieState>
       <Router>
-        <Appbar/>
+        <Appbar />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/search' exact component={Search} />
           <Route path='/detail/:id' exact component={Detail} />
+          <Route path='/pagination' exact component={Pagination} />
         </Switch>
         <Footer />
       </Router>

@@ -5,12 +5,22 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Typography } from '@material-ui/core';
 import NowPlayingItem from './NowPlayingItem';
+import { useHistory } from 'react-router-dom';
 const NowPlaying = () => {
   const context = useContext(movieContext);
+  const history = useHistory();
   useEffect(() => {
-    context.getNowPlayingMovies();
+    context.getNowPlayingMovies(1);
     //eslint-disable-next-line
   }, []);
+  const goPagination = () => {
+    history.push({
+      pathname: '/pagination',
+      state: {
+        title: 'NOW PLAYING',
+      },
+    });
+  };
   return (
     <Fragment>
       <Typography
@@ -21,6 +31,13 @@ const NowPlaying = () => {
         }}
       >
         Now Playing
+      </Typography>
+      <Typography
+        variant='h5'
+        onClick={goPagination}
+        style={{ cursor: 'pointer', color: 'orange', margin: '1rem 0' }}
+      >
+        View All
       </Typography>
       <OwlCarousel
         dots={false}

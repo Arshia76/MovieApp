@@ -23,3 +23,25 @@ code {
   font-size: 3rem !important;
   margin: 0 2rem !important;
 }
+
+.pagination {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.pagination li.active a {
+  background-color: blue !important;
+}
+
+.pagination a {
+  background-color: black;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background-color: blue;
+  text-decoration: none;
+  color: white;
+}

@@ -17,16 +17,17 @@ const MovieState = (props) => {
     genres: [],
     casts: [],
     detail: {},
-    genre: '',
+    genreName: '',
+    genreId: '',
   };
 
   const [state, dispatch] = useReducer(movieReducer, initialState);
 
   //different methods are going to br  implemented  here
 
-  const getUpcomingMovies = async () => {
+  const getUpcomingMovies = async (page = 1) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API}&language=en-US&page=${page}`
     );
     const data = res.data.results;
 
@@ -51,9 +52,9 @@ const MovieState = (props) => {
     });
   };
 
-  const getNowPlayingMovies = async () => {
+  const getNowPlayingMovies = async (page = 1) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API}&language=en-US&page=${page}`
     );
     const data = res.data.results;
 
@@ -74,10 +75,13 @@ const MovieState = (props) => {
     });
   };
 
-  const setGenre = (genre) => {
+  const setGenre = (genreName, genreId) => {
     dispatch({
       type: types.SET_GENRE,
-      payload: genre,
+      payload: {
+        genreName,
+        genreId,
+      },
     });
   };
   const getMovieVideos = async (movieId) => {
@@ -107,9 +111,9 @@ const MovieState = (props) => {
     });
   };
 
-  const moviesByGenre = async (genre) => {
+  const moviesByGenre = async (genre, page = 1) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=1&with_genres=${genre}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${page}&with_genres=${genre}`
     );
 
     const data = res.data.results;
@@ -120,9 +124,9 @@ const MovieState = (props) => {
     });
   };
 
-  const getTopRatedMovies = async () => {
+  const getTopRatedMovies = async (page = 1) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API}&language=en-US&page=${page}`
     );
 
     const data = res.data.results;
@@ -172,7 +176,8 @@ const MovieState = (props) => {
         genres: state.genres,
         casts: state.casts,
         detail: state.detail,
-        genre: state.genre,
+        genreName: state.genreName,
+        genreId: state.genreId,
         getUpcomingMovies,
         searchMovies,
         getNowPlayingMovies,

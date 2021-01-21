@@ -7,13 +7,13 @@ const Genre = ({ genre }) => {
 
   useEffect(() => {
     context.moviesByGenre(27);
-    context.setGenre('Horror');
+    context.setGenre('Horror', 27);
     //eslint-disable-next-line
   }, []);
 
   const handleClick = async () => {
     await context.moviesByGenre(genre.id);
-    context.setGenre(genre.name);
+    context.setGenre(genre.name, genre.id);
   };
   return (
     <Chip

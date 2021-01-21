@@ -5,9 +5,20 @@ import CategoryItem from './CategoryItem';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Typography } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const Category = () => {
   const context = useContext(movieContext);
+  const history = useHistory();
+  const goPagination = () => {
+    history.push({
+      pathname: '/pagination',
+      state: {
+        title: context.genreName,
+        id: context.genreId,
+      },
+    });
+  };
   return (
     <Fragment>
       <Typography
@@ -17,7 +28,14 @@ const Category = () => {
           margin: '1rem 0',
         }}
       >
-        {context.genre}
+        {context.genreName}
+      </Typography>
+      <Typography
+        variant='h5'
+        onClick={goPagination}
+        style={{ cursor: 'pointer', color: 'orange', margin: '1rem 0' }}
+      >
+        View All
       </Typography>
       <OwlCarousel
         dots={false}
