@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Paper, Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactStars from 'react-stars';
 import { withRouter } from 'react-router-dom';
+import movieContext from '../context/movieContext';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     margin: '1rem 0',
     border: '2px solid orange',
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'start',
+    alignItems: 'center',
   },
   text: {
     marginTop: '.8rem',
@@ -33,10 +34,12 @@ const useStyles = makeStyles({
     marginLeft: '.3rem',
     marginTop: '.4rem',
   },
-});
+}));
 
 const NowPlayingItem = ({ id, img, title, rating, history }) => {
+  const context = useContext(movieContext);
   const goDetial = () => {
+    context.setLoading();
     history.push({ pathname: `/detail/${id}`, state: { img } });
   };
   const classes = useStyles();
@@ -45,7 +48,7 @@ const NowPlayingItem = ({ id, img, title, rating, history }) => {
       <Paper className={classes.paper}>
         <img
           className={classes.image}
-          src={`https://image.tmdb.org/t/p/original/${img}`}
+          src={`https://image.tmdb.org/t/p/w500/${img}`}
           alt='movie-posters'
           onClick={goDetial}
         />

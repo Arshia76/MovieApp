@@ -53,7 +53,7 @@ const Overal = () => {
             Runtime
           </Typography>
           <Typography className={classes.paragraph}>
-            {context.detail.runtime}
+            {`${context.detail.runtime} minutes`}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
@@ -61,19 +61,20 @@ const Overal = () => {
             Budget
           </Typography>
           <Typography className={classes.paragraph}>
-            {context.detail.budget}
+            {`${context.detail.budget} $`}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant='h6' className={classes.headers}>
             Homepage
           </Typography>
-          <Typography
+          <a
+            href={context.detail.homepage}
             className={classes.paragraph}
             style={{ overflowWrap: 'break-word' }}
           >
             {context.detail.homepage}
-          </Typography>
+          </a>
         </Grid>
       </Grid>
     </Grid>

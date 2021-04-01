@@ -1,15 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Box, Chip } from '@material-ui/core';
 import movieContext from '../../context/movieContext';
+import Loader from '../Loader/Loader';
 
 const Genres = () => {
   const context = useContext(movieContext);
 
   return (
     <Box>
-      {context.detail.genres.map(genre => {
-        return <Chip label={genre.name} />;
-      })}
+      {context.loading ? (
+        <Loader />
+      ) : (
+        context.detail.genres.map((genre) => {
+          return <Chip label={genre.name} />;
+        })
+      )}
     </Box>
   );
 };

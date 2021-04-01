@@ -1,0 +1,1 @@
+GET  https://api.themoviedb.org/3/movie/557/similar?api_key=bd7a159ff0a80d959e00f8002c253f1d&language=en-US&page=1

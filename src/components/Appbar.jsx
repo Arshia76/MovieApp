@@ -78,6 +78,7 @@ const Appbar = ({ history }) => {
 
   const search = (e) => {
     if (e.key === 'Enter' && e.target.value !== '') {
+      context.setLoading();
       context.searchMovies(e.target.value);
       history.push('/search');
     }

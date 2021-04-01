@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import PaginationItem from '../components/pagination/PaginationItem';
 import Paginator from 'react-js-pagination';
 import movieContext from '../context/movieContext';
+import Loader from '../components/Loader/Loader';
 
 const Pagination = ({ location }) => {
   const [activePage, setActivepage] = useState(1);
@@ -22,12 +23,13 @@ const Pagination = ({ location }) => {
     //eslint-disable-next-line
   }, [activePage, context]);
   const onChange = (page) => {
+    context.setLoading();
     setActivepage(page);
   };
   return (
     <Box style={{ textAlign: 'center' }}>
       <Typography
-        variant='h2'
+        variant='h5'
         style={{
           color: 'orange',
           margin: '1rem 0',
@@ -44,53 +46,57 @@ const Pagination = ({ location }) => {
           width: '100%',
         }}
       >
-        {title === 'NOW PLAYING'
-          ? context.nowPlayingMovies.map((movie) => {
-              return (
-                <PaginationItem
-                  key={movie.id}
-                  id={movie.id}
-                  img={movie.backdrop_path}
-                  title={movie.title}
-                  rating={movie.vote_average}
-                />
-              );
-            })
-          : title === 'UPCOMING'
-          ? context.upcomingMovies.map((movie) => {
-              return (
-                <PaginationItem
-                  key={movie.id}
-                  id={movie.id}
-                  img={movie.backdrop_path}
-                  title={movie.title}
-                  rating={movie.vote_average}
-                />
-              );
-            })
-          : title === 'TOP RATED'
-          ? context.topRatedMovies.map((movie) => {
-              return (
-                <PaginationItem
-                  key={movie.id}
-                  id={movie.id}
-                  img={movie.backdrop_path}
-                  title={movie.title}
-                  rating={movie.vote_average}
-                />
-              );
-            })
-          : context.genreMovies.map((movie) => {
-              return (
-                <PaginationItem
-                  key={movie.id}
-                  id={movie.id}
-                  img={movie.backdrop_path}
-                  title={movie.title}
-                  rating={movie.vote_average}
-                />
-              );
-            })}
+        {context.loading ? (
+          <Loader />
+        ) : title === 'NOW PLAYING' ? (
+          context.nowPlayingMovies.map((movie) => {
+            return (
+              <PaginationItem
+                key={movie.id}
+                id={movie.id}
+                img={movie.backdrop_path}
+                title={movie.title}
+                rating={movie.vote_average}
+              />
+            );
+          })
+        ) : title === 'UPCOMING' ? (
+          context.upcomingMovies.map((movie) => {
+            return (
+              <PaginationItem
+                key={movie.id}
+                id={movie.id}
+                img={movie.backdrop_path}
+                title={movie.title}
+                rating={movie.vote_average}
+              />
+            );
+          })
+        ) : title === 'TOP RATED' ? (
+          context.topRatedMovies.map((movie) => {
+            return (
+              <PaginationItem
+                key={movie.id}
+                id={movie.id}
+                img={movie.backdrop_path}
+                title={movie.title}
+                rating={movie.vote_average}
+              />
+            );
+          })
+        ) : (
+          context.genreMovies.map((movie) => {
+            return (
+              <PaginationItem
+                key={movie.id}
+                id={movie.id}
+                img={movie.backdrop_path}
+                title={movie.title}
+                rating={movie.vote_average}
+              />
+            );
+          })
+        )}
       </Grid>
       <Box
         style={{
@@ -103,7 +109,7 @@ const Pagination = ({ location }) => {
         <Paginator
           activePage={activePage}
           itemsCountPerPage={20}
-          totalItemsCount={1000}
+          totalItemsCount={500}
           pageRangeDisplayed={5}
           onChange={onChange}
         />

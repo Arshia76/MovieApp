@@ -33,7 +33,7 @@ const CastItem = ({ image, name, character }) => {
     >
       <img
         className={classes.image}
-        src={`https://image.tmdb.org/t/p/original/${image}`}
+        src={`https://image.tmdb.org/t/p/w500/${image}`}
         alt='character'
       />
 

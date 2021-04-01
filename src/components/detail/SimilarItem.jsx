@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Paper, Typography, Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactStars from 'react-stars';
 import { withRouter } from 'react-router-dom';
+import movieContext from '../../context/movieContext';
 
 const useStyles = makeStyles({
   paper: {
@@ -33,7 +34,9 @@ const useStyles = makeStyles({
 });
 
 const SimilarItem = ({ id, img, title, rating, history }) => {
+  const context = useContext(movieContext);
   const goDetial = () => {
+    context.setLoading();
     history.push({ pathname: `/detail/${id}`, state: { img } });
   };
   const classes = useStyles();
@@ -42,7 +45,7 @@ const SimilarItem = ({ id, img, title, rating, history }) => {
       <Paper className={classes.paper}>
         <img
           className={classes.image}
-          src={`https://image.tmdb.org/t/p/original/${img}`}
+          src={`https://image.tmdb.org/t/p/w500/${img}`}
           alt='movie-posters'
           onClick={goDetial}
         />

@@ -32,9 +32,10 @@ const GenreContainer = () => {
         }}
         className='owl-theme'
       >
-        {context.genres.map((genre) => {
-          return <Genre key={genre.id} genre={genre} />;
-        })}
+        {context.genres &&
+          context.genres.map((genre) => {
+            return <Genre key={genre.id} genre={genre} />;
+          })}
       </OwlCarousel>
     </Box>
   );

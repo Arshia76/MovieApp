@@ -6,6 +6,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Typography } from '@material-ui/core';
 import TopRatedItem from './TopRatedItem';
 import { useHistory } from 'react-router-dom';
+import Loader from './Loader/Loader';
 const TopRated = () => {
   const context = useContext(movieContext);
   const history = useHistory();
@@ -15,6 +16,7 @@ const TopRated = () => {
   }, []);
 
   const goPagination = () => {
+    context.setLoading();
     history.push({
       pathname: '/pagination',
       state: {
@@ -25,7 +27,7 @@ const TopRated = () => {
   return (
     <Fragment>
       <Typography
-        variant='h2'
+        variant='h5'
         style={{
           color: 'orange',
           margin: '1rem 0',
@@ -45,7 +47,7 @@ const TopRated = () => {
         nav={true}
         responsive={{
           0: {
-            items: 2,
+            items: 1,
           },
           600: {
             items: 2,
@@ -57,17 +59,22 @@ const TopRated = () => {
         margin={15}
         className='owl-theme'
       >
-        {context.topRatedMovies.map((topMovie) => {
-          return (
-            <TopRatedItem
-              key={topMovie.id}
-              id={topMovie.id}
-              img={topMovie.poster_path}
-              title={topMovie.title}
-              rating={topMovie.vote_average}
-            />
-          );
-        })}
+        {context.loading ? (
+          <Loader />
+        ) : (
+          context.topRatedMovies &&
+          context.topRatedMovies.map((topMovie) => {
+            return (
+              <TopRatedItem
+                key={topMovie.id}
+                id={topMovie.id}
+                img={topMovie.poster_path}
+                title={topMovie.title}
+                rating={topMovie.vote_average}
+              />
+            );
+          })
+        )}
       </OwlCarousel>
     </Fragment>
   );

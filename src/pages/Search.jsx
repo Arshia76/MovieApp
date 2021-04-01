@@ -2,6 +2,7 @@ import { Grid, Typography, Box } from '@material-ui/core';
 import React, { useContext } from 'react';
 import movieContext from '../context/movieContext';
 import SearchItem from '../components/search/SearchItem';
+import Loader from '../components/Loader/Loader';
 
 const Search = () => {
   const context = useContext(movieContext);
@@ -15,7 +16,9 @@ const Search = () => {
         width: '100%',
       }}
     >
-      {context.movies.length !== 0 ? (
+      {context.loading ? (
+        <Loader />
+      ) : context.movies.length !== 0 ? (
         context.movies.map((search) => {
           return (
             <SearchItem

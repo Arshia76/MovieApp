@@ -12,6 +12,7 @@ const Genre = ({ genre }) => {
   }, []);
 
   const handleClick = async () => {
+    context.setLoading();
     await context.moviesByGenre(genre.id);
     context.setGenre(genre.name, genre.id);
   };

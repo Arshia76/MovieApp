@@ -19,6 +19,7 @@ const MovieState = (props) => {
     detail: {},
     genreName: '',
     genreId: '',
+    loading: true,
   };
 
   const [state, dispatch] = useReducer(movieReducer, initialState);
@@ -163,6 +164,12 @@ const MovieState = (props) => {
     });
   };
 
+  const setLoading = () => {
+    dispatch({
+      type: types.LOADING,
+    });
+  };
+
   return (
     <movieContext.Provider
       value={{
@@ -178,6 +185,8 @@ const MovieState = (props) => {
         detail: state.detail,
         genreName: state.genreName,
         genreId: state.genreId,
+        loading: state.loading,
+        setLoading,
         getUpcomingMovies,
         searchMovies,
         getNowPlayingMovies,

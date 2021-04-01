@@ -8,18 +8,18 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   typography: {
     color: 'white',
-    marginTop: '1rem'
+    marginTop: '1rem',
   },
 
   icon: {
-    marginRight: '.3rem'
+    marginRight: '.3rem',
   },
   container: {
-    padding: '1.5rem'
+    padding: '1.5rem',
   },
   header: {
-    color: 'whitesmoke'
-  }
+    color: 'whitesmoke',
+  },
 });
 
 const Footer = () => {
@@ -27,9 +27,9 @@ const Footer = () => {
   return (
     <Container
       style={{
-        width: '80vw',
+        width: '100vw',
         borderTop: '2px solid orange',
-        marginTop: '2.5rem'
+        marginTop: '2.5rem',
       }}
     >
       <Grid
@@ -49,24 +49,25 @@ const Footer = () => {
         </Grid>
         <Grid item container xs={12} sm={6} direction='column'>
           <Grid item>
-            <Typography variant='h5' className={classes.header}>
+            <Typography variant='h6' className={classes.header}>
               Keep In Touch
             </Typography>
           </Grid>
           <Grid item>
-            <Typography className={classes.typography}>
+            <Typography className={classes.typography} variant='body1'>
               <LocationOnIcon className={classes.icon} /> Address : Lorem ipsum
               dolor sit amet.
             </Typography>
           </Grid>
           <Grid item>
-            <Typography className={classes.typography}>
+            <Typography className={classes.typography} variant='body1'>
               <PhoneIcon className={classes.icon} /> phone : 09383130658
             </Typography>
           </Grid>
           <Grid item>
-            <Typography className={classes.typography}>
-              <EmailIcon className={classes.icon} /> email : arshia_nazarlotfi1376@yahoo.com
+            <Typography className={classes.typography} variant='body1'>
+              <EmailIcon className={classes.icon} /> email :
+              a.nazarlotfi@gmail.com
             </Typography>
           </Grid>
         </Grid>

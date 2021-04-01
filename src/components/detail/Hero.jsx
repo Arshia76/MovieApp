@@ -7,12 +7,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.down('sm')]: {
       width: '100%',
-      height: '300px',
+      height: '200px',
       margin: '0 auto',
     },
 
     [theme.breakpoints.up('sm')]: {
-      width: '550px',
+      width: '600px',
       height: '300px',
     },
   },

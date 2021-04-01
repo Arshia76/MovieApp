@@ -9,3 +9,4 @@ export const SET_GENRE = 'SET_GENRE';
 export const NOW_PLAYING = 'NOW_PLAYING';
 export const SIMILAR_MOVIES = 'SIMILAR_MOVIES';
 export const SEARCH = 'SEARCH'
+export const LOADING = 'LOADING'
