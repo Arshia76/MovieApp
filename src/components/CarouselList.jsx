@@ -8,16 +8,19 @@ import { useHistory } from 'react-router-dom';
 import '../App.css';
 import Loader from './Loader/Loader';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   carousel: {
     marginTop: '1rem',
     height: '65vh',
+    [theme.breakpoints.down('sm')]: {
+      height: '20rem',
+    },
   },
   text: {
     color: 'orange',
     textAlign: 'center',
   },
-});
+}));
 
 const CarouselList = () => {
   const classes = useStyles();

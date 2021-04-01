@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <Container
       style={{
-        width: '100vw',
+        width: '80vw',
         borderTop: '2px solid orange',
         marginTop: '2.5rem',
       }}
