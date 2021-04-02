@@ -46,7 +46,7 @@ const Detail = ({ match, location }) => {
   return (
     <Box
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${img})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/w500/${img})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '100% 100%',

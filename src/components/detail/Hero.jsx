@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Box } from '@material-ui/core';
 import movieContext from '../../context/movieContext';
 import { makeStyles } from '@material-ui/core/styles';
+import Loader from '../Loader/Loader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +30,15 @@ const Hero = () => {
         paddingTop: '2rem',
       }}
     >
-      <iframe
-        title='movie trailer'
-        className={classes.root}
-        src={`https://www.youtube.com/embed/${context.video}`}
-      ></iframe>
+      {context.video ? (
+        <iframe
+          title='movie trailer'
+          className={classes.root}
+          src={`https://www.youtube.com/embed/${context.video}`}
+        ></iframe>
+      ) : (
+        <Loader />
+      )}
     </Box>
   );
 };
