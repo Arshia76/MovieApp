@@ -3,6 +3,7 @@ import { Box } from '@material-ui/core';
 import movieContext from '../../context/movieContext';
 import { makeStyles } from '@material-ui/core/styles';
 import Loader from '../Loader/Loader';
+import { Fragment } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,23 +24,25 @@ const Hero = () => {
   const context = useContext(movieContext);
   const classes = useStyles();
   return (
-    <Box
-      style={{
-        textAlign: 'center',
-        marginBottom: '1.5rem',
-        paddingTop: '2rem',
-      }}
-    >
-      {context.video ? (
-        <iframe
-          title='movie trailer'
-          className={classes.root}
-          src={`https://www.youtube.com/embed/${context.video}`}
-        ></iframe>
-      ) : (
+    <Fragment>
+      {context.loading ? (
         <Loader />
+      ) : (
+        <Box
+          style={{
+            textAlign: 'center',
+            marginBottom: '1.5rem',
+            paddingTop: '2rem',
+          }}
+        >
+          <iframe
+            title='movie trailer'
+            className={classes.root}
+            src={`https://www.youtube.com/embed/${context.video}`}
+          ></iframe>
+        </Box>
       )}
-    </Box>
+    </Fragment>
   );
 };
 
