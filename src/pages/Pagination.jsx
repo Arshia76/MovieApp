@@ -25,6 +25,7 @@ const Pagination = ({ location }) => {
   const onChange = (page) => {
     context.setLoading();
     setActivepage(page);
+    window.scrollTo(0, 0);
   };
   return (
     <Box style={{ textAlign: 'center' }}>

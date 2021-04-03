@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import MovieState from './context/MovieState';
 import './App.css';
 import Home from './pages/Home';
@@ -8,11 +8,17 @@ import Footer from './components/Footer';
 import Appbar from './components/Appbar';
 import Search from './pages/Search';
 import Pagination from './pages/Pagination';
+import createHistory from 'history/createBrowserHistory';
+export const history = createHistory();
+
+history.listen((location, action) => {
+  window.scrollTo(0, 0);
+});
 
 function App() {
   return (
     <MovieState>
-      <Router>
+      <Router history={history}>
         <Appbar />
         <Switch>
           <Route path='/' exact component={Home} />
