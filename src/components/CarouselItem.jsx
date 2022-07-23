@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: '100%',
     height: '65vh',
+    objectFit: 'cover',
     filter: 'brightness(50%)',
     cursor: 'pointer',
     [theme.breakpoints.down('sm')]: {
@@ -47,7 +48,7 @@ const CarouselItem = ({ img, title, history, id }) => {
     <Paper className={classes.paper}>
       <img
         className={classes.image}
-        src={`https://image.tmdb.org/t/p/w500/${img}`}
+        src={`https://image.tmdb.org/t/p/w1280/${img}`}
         alt='aks-movie'
         onClick={goDetial}
       />
